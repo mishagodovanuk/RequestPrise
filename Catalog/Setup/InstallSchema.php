@@ -30,7 +30,7 @@ class InstallSchema implements InstallSchemaInterface
         $installer->startSetup();
 
         $table = $installer->getConnection()->newTable(
-            $installer->getTable('smile_customer_pequest_price')
+            $installer->getTable('smile_customer_request_price')
         )->addColumn(
             'id',
             Table::TYPE_INTEGER,
@@ -95,20 +95,19 @@ class InstallSchema implements InstallSchemaInterface
             'Product sku'
         )->addForeignKey(
             $installer->getFkName(
-                'smile_customer_pequest_price',
+                'smile_customer_request_price',
                 'product_sku',
                 'catalog_product_entity',
-                'sku'),
+                'sku'
+            ),
             'product_sku',
             $installer->getTable('catalog_product_entity'),
             'sku',
             Table::ACTION_CASCADE
         )->setComment(
             'Catalog products requested price'
-
-    );
+        );
         $installer->getConnection()->createTable($table);
         $installer->endSetup();
-
     }
 }

@@ -1,6 +1,15 @@
+<?php
+/*
+ * Request price button
+ * */
+?>
 <button type="submit"
         title=""
         class="action primary tocart"
-        id="request-price-button">
+        id="request-price-button"
+        data-mage-init='{"buttonPopup": {}}'>
     <span><?= $block->getButtonLabel(); ?></span>
 </button>
+<div id="popup-modal-form" style="display:none;">
+    <?php echo $block->getRequestPriceForm(); ?>
+</div>
