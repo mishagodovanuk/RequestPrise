@@ -18,9 +18,9 @@
             </div>
         </div>
         <div class="field email required">
-            <label class="label" for="email"><span><?= __('Email') ?></span></label>
+            <label class="label" for="request_email"><span><?= __('Email') ?></span></label>
             <div class="control">
-                <input name="email" id="email" title="<?= __('Email') ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                <input name="request_email" id="request_email" title="<?= __('Email') ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
             </div>
         </div>
         <div class="field comment required">
@@ -32,6 +32,7 @@
     </fieldset>
     <div class="actions-toolbar">
         <div class="primary">
+            <input type="hidden" name="prod_sku" id="prod_sku" value="<?= $block->getCurrentProduct()->getSku(); ?>" />
             <input type="button" value="<?= __('Submit') ?>" id="request-price-submit" class="action submit primary">
         </div>
     </div>
