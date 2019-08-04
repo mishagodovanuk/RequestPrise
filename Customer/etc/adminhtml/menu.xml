@@ -8,7 +8,7 @@
              module="Smile_Customer"
              sortOrder="60"
              parent="Magento_Customer::customer"
-             action="smile_request_price/index"
+             action="customer/requestprice/index"
              resource="Smile_Customer::customer_request_price"/>
     </menu>
 </config>
