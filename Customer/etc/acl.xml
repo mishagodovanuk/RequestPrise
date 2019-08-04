@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Customer::customer" title="Customers" translate="title" sortOrder="40">
+                    <resource id="Smile_Customer::customer_request_price" title="Price Requests" translate="title" sortOrder="60" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Smile_Customer::request_price"
+             title="Price Requests"
+             translate="title"
+             module="Smile_Customer"
+             sortOrder="60"
+             parent="Magento_Customer::customer"
+             action="smile_request_price/index"
+             resource="Smile_Customer::customer_request_price"/>
+    </menu>
+</config>
