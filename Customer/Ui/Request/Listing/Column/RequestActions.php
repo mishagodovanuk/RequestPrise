@@ -1,5 +1,5 @@
 <?php
-namespace Hodovanuk\Blog\Ui\Component\Listing\Column;
+namespace Smile\Customer\Ui\Request\Listing\Column;
 
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
@@ -7,25 +7,20 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 
 /**
- * Class CommentsActions
- * @package Hodovanuk\Blog\Ui\Component\Listing\Column
+ * Class RequestActions
+ * @package Smile\Customer\Ui\Request\Listing\Column
  */
-class CommentsActions extends Column
+class RequestActions extends Column
 {
     /**
-     * Url path to answer page
+     * Url path to answer request
      */
-    const URL_PATH_ANSWER = 'hodovanuk_blog/comments/edit';
+    const URL_PATH_ANSWER = 'customer/request/edit';
 
     /**
-     * Url path to delete page
+     * Url path to delete request
      */
-    const URL_PATH_DELETE = 'hodovanuk_blog/comments/delete';
-
-    /**
-     * Url path to post form page
-     */
-    const URL_PATH_ADMIN_POST = 'hodovanuk_blog/post/form';
+    const URL_PATH_DELETE = 'customer/request/delete';
 
     /**
      * Url builder
@@ -35,10 +30,9 @@ class CommentsActions extends Column
     private $urlBuilder;
 
     /**
-     * Constructor
-     *
+     * RequestActions constructor.
      * @param ContextInterface $context
-     * @param UiComponentFactory $uiComponentFactorys
+     * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
      * @param array $components
      * @param array $data
@@ -89,15 +83,6 @@ class CommentsActions extends Column
                                 ]
                             ),
                             'label' => __('Delete')
-                        ],
-                        'form' => [
-                            'href' => $this->urlBuilder->getUrl(
-                                static::URL_PATH_ADMIN_POST,
-                                [
-                                    'id' => $item['post_id']
-                                ]
-                            ),
-                            'label' => __('Post admin')
                         ],
                     ];
                 }

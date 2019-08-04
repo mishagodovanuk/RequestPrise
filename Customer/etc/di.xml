@@ -3,4 +3,51 @@
     <preference for="Smile\Customer\Api\Data\RequestInterface" type="Smile\Customer\Model\Request" />
     <preference for="Smile\Customer\Api\RequestRepositoryInterface" type="Smile\Customer\Model\RequestRepository" />
     <preference for="Smile\Customer\Api\Data\RequestSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="smile_customer_request_listing_data_source" xsi:type="string">Smile\Customer\Model\ResourceModel\Request\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Smile\Customer\Model\ResourceModel\Request\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smile_customer_request_price</argument>
+            <argument name="eventPrefix" xsi:type="string">customer_request_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">request_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Smile\Customer\Model\ResourceModel\Request</argument>
+        </arguments>
+    </type>
+    <virtualType name="CustomerGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Smile\Customer\Api\Data\RequestInterface" xsi:type="string">Smile\Customer\Api\RequestRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Smile\Customer\Api\Data\RequestInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">smile_customer_request_price</item>
+                    <item name="identifierField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="Smile\Customer\Api\Data\RequestInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

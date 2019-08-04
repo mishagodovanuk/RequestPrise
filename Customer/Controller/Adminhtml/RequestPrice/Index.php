@@ -43,6 +43,10 @@ class Index extends Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
+        $resultPage->setActiveMenu('Smile_Customer::customer_request_price');
+        $resultPage->addBreadcrumb(__('Request price'), __('Request price'));
+        $resultPage->addBreadcrumb(__('Request price'), __('Request price'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Request price'));
 
         return $resultPage;
     }

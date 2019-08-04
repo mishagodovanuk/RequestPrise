@@ -2,32 +2,24 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">hodovanuk_blog_comments_listing.hodovanuk_blog_comments_listing_data_source</item>
-        </item>
-        <item name="buttons" xsi:type="array">
-            <item name="add" xsi:type="array">
-                <item name="name" xsi:type="string">add</item>
-                <item name="label" xsi:type="string" translate="true">Add New Admin Comment</item>
-                <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="string">hodovanuk_blog/comments/create</item>
-            </item>
+            <item name="provider" xsi:type="string">smile_customer_request_listing.smile_customer_request_listing_data_source</item>
         </item>
     </argument>
     <settings>
-        <spinner>hodovanuk_blog_comments_columns</spinner>
+        <spinner>smile_customer_request_columns</spinner>
         <deps>
-            <dep>hodovanuk_blog_comments_listing.hodovanuk_blog_comments_listing_data_source</dep>
+            <dep>smile_customer_request_listing.smile_customer_request_listing_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="hodovanuk_blog_comments_listing_data_source" component="Magento_Ui/js/grid/provider">
+    <dataSource name="smile_customer_request_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
                 <param name="indexField" xsi:type="string">id</param>
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
-        <aclResource>Hodovanuk_Blog::comments</aclResource>
-        <dataProvider class="Magento\Cms\Ui\Component\DataProvider" name="hodovanuk_blog_comments_listing_data_source">
+        <aclResource>Smile_Customer::comments</aclResource>
+        <dataProvider class="Magento\Cms\Ui\Component\DataProvider" name="smile_customer_request_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>id</primaryFieldName>
@@ -55,7 +47,7 @@
         </filters>
         <paging name="listing_paging"/>
     </listingToolbar>
-    <columns name="hodovanuk_blog_comments_columns">
+    <columns name="smile_customer_request_columns">
         <column name="id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -66,30 +58,12 @@
                 </item>
             </argument>
         </column>
-        <column name="first_name">
+        <column name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">First name</item>
+                    <item name="label" xsi:type="string" translate="true">Customer name</item>
                     <item name="sortOrder" xsi:type="number">20</item>
-                </item>
-            </argument>
-        </column>
-        <column name="last_name">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Last name</item>
-                    <item name="sortOrder" xsi:type="number">30</item>
-                </item>
-            </argument>
-        </column>
-        <column name="comment">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Comment</item>
-                    <item name="sortOrder" xsi:type="number">40</item>
                 </item>
             </argument>
         </column>
@@ -98,33 +72,35 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Email</item>
-                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
                 </item>
             </argument>
         </column>
-        <column name="data" class="Magento\Ui\Component\Listing\Columns\Date">
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">dateRange</item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="dataType" xsi:type="string">date</item>
                     <item name="sortOrder" xsi:type="number">60</item>
-                    <item name="label" xsi:type="string" translate="true">Created</item>
+                    <item name="label" xsi:type="string" translate="true">Created at</item>
                 </item>
             </argument>
         </column>
-        <column name="answer" component="Magento_Ui/js/grid/columns/select">
+        <column name="status" component="Magento_Ui/js/grid/columns/select">
             <argument name="data" xsi:type="array">
-               <item name="options" xsi:type="object">Hodovanuk\Blog\Model\Comments\Source\Status</item>
-               <item name="config" xsi:type="array">
-                   <item name="filter" xsi:type="string">select</item>
-                   <item name="label" xsi:type="string" translate="true">Status</item>
-                   <item name="sortOrder" xsi:type="number">70</item>
-                   <item name="dataType" xsi:type="string">select</item>
+                <item name="options" xsi:type="object">Smile\Customer\Model\Request\Source\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="editor" xsi:type="string">select</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="visible" xsi:type="boolean">true</item>
                 </item>
             </argument>
         </column>
-        <actionsColumn name="actions" class="Hodovanuk\Blog\Ui\Component\Listing\Column\CommentsActions">
+        <actionsColumn name="actions" class="Smile\Customer\Ui\Request\Listing\Column\RequestActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>

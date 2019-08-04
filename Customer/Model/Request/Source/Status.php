@@ -1,37 +1,38 @@
 <?php
-namespace Hodovanuk\Blog\Model\Comments\Source;
+namespace Smile\Customer\Model\Request\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
-use Hodovanuk\Blog\Model\Comment;
+use Smile\Customer\Model\Request;
 
 /**
  * Class Status
- * @package Hodovanuk\Blog\Model\Comments\Source
+ * @package Smile\Customer\Model\Request\Source
  */
 class Status implements OptionSourceInterface
 {
     /**
-     * @var Comment
+     * @var Request
      */
-    private $commentStatus;
+    private $requestStatus;
 
     /**
      * Status constructor.
-     * @param Comment $comment
+     *
+     * @param Request $request
      */
-    public function __construct(Comment $comment)
+    public function __construct(Request $request)
     {
-        $this->commentStatus = $comment;
+        $this->requestStatus = $request;
     }
 
     /**
-     * Get options
+     * Get all available options
      *
      * @return array
      */
     public function toOptionArray()
     {
-        $availableOptions = $this->commentStatus->getAnswerStatuses();
+        $availableOptions = $this->requestStatus->getAnswerStatuses();
         $options = [];
         foreach ($availableOptions as $key => $value) {
             $options[] = [
