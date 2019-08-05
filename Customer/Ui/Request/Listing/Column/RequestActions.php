@@ -15,12 +15,12 @@ class RequestActions extends Column
     /**
      * Url path to answer request
      */
-    const URL_PATH_ANSWER = 'customer/request/edit';
+    const URL_PATH_ANSWER = 'customer/requestprice/edit';
 
     /**
      * Url path to delete request
      */
-    const URL_PATH_DELETE = 'customer/request/delete';
+    const URL_PATH_DELETE = 'customer/requestprice/delete';
 
     /**
      * Url builder

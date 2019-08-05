@@ -5,7 +5,10 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Customer::customer" title="Customers" translate="title" sortOrder="40">
-                    <resource id="Smile_Customer::customer_request_price" title="Price Requests" translate="title" sortOrder="60" />
+                    <resource id="Smile_Customer::customer_request_price" title="Price Requests" translate="title" sortOrder="60">
+                        <resource id="Smile_Customer::customer_request_price_save" title="Save price request" translate="title" sortOrder="10"/>
+                        <resource id="Smile_Customer::customer_request_price_delete" title="Delete price request" translate="title" sortOrder="20"/>
+                    </resource>
                 </resource>
             </resource>
         </resources>

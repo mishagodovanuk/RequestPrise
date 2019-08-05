@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">smile_customer_request_form.smile_customer_request_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Request Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Smile\Customer\Block\Adminhtml\Request\Edit\SaveButton"/>
+            <button name="delete" class="Smile\Customer\Block\Adminhtml\Request\Edit\DeleteButton"/>
+            <button name="back" class="Smile\Customer\Block\Adminhtml\Request\Edit\BackButton"/>
+        </buttons>
+        <namespace>smile_customer_request_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>smile_customer_request_form.smile_customer_request_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="smile_customer_request_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="customer/requestprice/save"/>
+        </settings>
+        <dataProvider class="Smile\Customer\Model\Request\DataProvider" name="smile_customer_request_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">request</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataScope" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">request</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                    <item name="sortOrder" xsi:type="string">20</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">request</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                    <item name="sortOrder" xsi:type="string">30</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Email</item>
+                    <item name="dataScope" xsi:type="string">email</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="product_sku">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">request</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                    <item name="sortOrder" xsi:type="string">40</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Product sku</item>
+                    <item name="dataScope" xsi:type="string">product_sku</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="comment">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">request</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                    <item name="sortOrder" xsi:type="string">50</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="additionalClasses" xsi:type="string">admin__field-wide</item>
+                    <item name="dataType" xsi:type="string">textarea</item>
+                    <item name="dataScope" xsi:type="string">comment</item>
+                    <item name="label" xsi:type="string" translate="true">Comment</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Smile\Customer\Model\Request\Source\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">request</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="sortOrder" xsi:type="string">60</item>
+                    <item name="default" xsi:type="number">1</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="answer_content">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">request</item>
+                    <item name="sortOrder" xsi:type="string">70</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="additionalClasses" xsi:type="string">admin__field-wide</item>
+                    <item name="dataType" xsi:type="string">textarea</item>
+                    <item name="label" xsi:type="string" translate="true">Answer</item>
+                    <item name="dataScope" xsi:type="string">answer_content</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
