@@ -7,6 +7,7 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Smile\Customer\Api\RequestRepositoryInterface;
 use Smile\Customer\Model\RequestFactory;
+use Smile\Customer\Model\Request;
 
 /**
  * Class Save
@@ -82,10 +83,10 @@ class Save extends Action
                     $model = $this->requestFactory->create();
                 } else {
                     if (!empty($data['answer_content'])) {
-                        $data['status'] = 3;
+                        $data['status'] = Request::STATUS_CLOSED;
                         //place for send email logic
-                    } elseif(empty($data['answer_content']) && $data['status'] == 3 ) {
-                        $data['status'] = 2;
+                    } elseif(empty($data['answer_content']) && $data['status'] == Request::STATUS_CLOSED ) {
+                        $data['status'] = Request::STATUS_CHECKED;
                     }
                     $model = $this->requestRepository->getById($id);
                 }
