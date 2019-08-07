@@ -1,0 +1,3 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="request_admin_email_answer_template" label="Request Form Answer" file="request_form_answer.html" type="text" module="Smile_Customer" area="adminhtml"/>
+</config>
