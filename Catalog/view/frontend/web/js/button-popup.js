@@ -1,5 +1,7 @@
 /*
 *  Create modal window onclick function
+*  Create Ajax request
+*
 */
 define(
     [
@@ -36,21 +38,24 @@ define(
             ]
         };
 
-
         var popup = modal(options, $('#popup-modal-form'));
         $("#request-price-button").on('click',function(){
             $("#popup-modal-form").modal("openModal");
         });
 
+
+/*
+* Send ajax request
+*
+* params $form
+*/
         function sendFormData($form) {
             if($form.validation('isValid')){
-                alert('this say');
                 $.ajax({
                     url: $form.attr('action'),
                     data: $form.serialize(),
                     type: 'POST',
                     success: function() {
-                        alert('success');
                         $form[0].reset();
                         $('#popup-modal-form').modal('closeModal');
 

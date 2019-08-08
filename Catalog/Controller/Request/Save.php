@@ -6,12 +6,28 @@ use Magento\Framework\App\Action\Action;
 use Smile\Customer\Model\RequestFactory;
 use Smile\Customer\Api\RequestRepositoryInterface;
 
+/**
+ * Class Save
+ * @package Smile\Catalog\Controller\Request
+ */
 class Save extends Action
 {
+    /**
+     * @var RequestFactory
+     */
     protected $requestFactory;
 
+    /**
+     * @var RequestRepositoryInterface
+     */
     protected $requestRepository;
 
+    /**
+     * Save constructor.
+     * @param Context $context
+     * @param RequestFactory $requestFactory
+     * @param RequestRepositoryInterface $requestRepository
+     */
     public function __construct(
         Context $context,
         RequestFactory $requestFactory,
@@ -23,7 +39,7 @@ class Save extends Action
         parent::__construct($context);
     }
     /**
-     * Request action
+     * Save action
      *
      * @return void
      *
