@@ -46,7 +46,7 @@ class RequestPriceForm extends Template
      */
     public function getFormAction()
     {
-        return $this->getUrl('smile_customer/request/save');
+        return $this->getUrl('catalog/request/save');
     }
 
     /**
