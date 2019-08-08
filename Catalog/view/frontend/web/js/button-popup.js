@@ -4,13 +4,16 @@
 define(
     [
         'jquery',
-        'Magento_Ui/js/modal/modal'
+        'Magento_Ui/js/modal/modal',
+        'mage/mage'
     ],
     function(
         $,
-        modal
+        modal,
+        mage
     ) {
         var $form = $('#request-price-form');
+        $form.mage('validation', {});
         var options = {
             type: 'popup',
             responsive: true,
@@ -27,19 +30,31 @@ define(
                     text: $.mage.__('Send'),
                     class: 'action submit primary',
                     click: function () {
-                        sendFormData()
+                        sendFormData($form)
                     }
                 }
             ]
         };
+
 
         var popup = modal(options, $('#popup-modal-form'));
         $("#request-price-button").on('click',function(){
             $("#popup-modal-form").modal("openModal");
         });
 
-        function sendFormData() {
-            alert('send form data');
+        function sendFormData($form) {
+            if($form.validation('isValid')){
+                $.ajax({
+                    url: $form.attr('action'),
+                    data: $form.serialize(),
+                    type: 'POST',
+                    success: function() {
+                        $form[0].reset();
+                        $('#popup-modal-form').modal('closeModal');
+
+                    }
+                });
+            }
             //Ajax logic
         }
     }
