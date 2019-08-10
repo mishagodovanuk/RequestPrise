@@ -1,0 +1,21 @@
+{
+    "name": "mishagodovanuk/request-price-customer",
+    "description": "Magento 2 module to administrate price requests and answer then",
+    "keywords": [
+        "request price",
+        "administrator request price"
+    ],
+    "type": "magento2-module",
+    "version": "0.0.2",
+    "license": ["OSL-3.0"],
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.2.0",
+        "mishagodovanuk/request-price-customer": "0.0.2"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Smile\\Customer\\": ""
+        }
+    }
+}

@@ -141,26 +141,27 @@ class Save extends Action
                     $model = $this->requestRepository->getById($id);
                 }
 
-                $this->inlineTranslation->suspend();
+                if (!empty($id['answer_content'])) {
+                    $this->inlineTranslation->suspend();
 
-                $storeScope = ScopeInterface::SCOPE_STORE;
-                $transport = $this->transportBuilder
-                    ->setTemplateIdentifier('request_admin_email_answer_template')
-                    ->setTemplateOptions(
-                        [
-                            'area' => FrontNameResolver::AREA_CODE,
-                            'store' => Store::DEFAULT_STORE_ID,
-                        ]
-                    )
-                    ->setTemplateVars(['data' => $postObject])
-                    ->setFrom($this->getSenderData())
-                    ->addTo($model->getEmail())
-                    ->getTransport();
+                    $storeScope = ScopeInterface::SCOPE_STORE;
+                    $transport = $this->transportBuilder
+                        ->setTemplateIdentifier('request_admin_email_answer_template')
+                        ->setTemplateOptions(
+                            [
+                                'area' => FrontNameResolver::AREA_CODE,
+                                'store' => Store::DEFAULT_STORE_ID,
+                            ]
+                        )
+                        ->setTemplateVars(['data' => $postObject])
+                        ->setFrom($this->getSenderData())
+                        ->addTo($model->getEmail())
+                        ->getTransport();
 
-                $transport->sendMessage();
+                    $transport->sendMessage();
 
-                $this->inlineTranslation->resume();
-
+                    $this->inlineTranslation->resume();
+                }
                 $model->setData($data);
                 $model->setStatus(Request::STATUS_CLOSED);
                 $this->requestRepository->save($model);

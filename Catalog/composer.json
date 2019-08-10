@@ -1,0 +1,20 @@
+{
+    "name": "mishagodovanuk/request-price-catalog",
+    "description": "Magento 2 module witch help customer leave request for a price",
+    "keywords": [
+        "request price",
+        "catalog request price"
+    ],
+    "type": "magento2-module",
+    "version": "0.0.2",
+    "license": ["OSL-3.0"],
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.2.0"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Smile\\Catalog\\": ""
+        }
+    }
+}
