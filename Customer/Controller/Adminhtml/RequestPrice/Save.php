@@ -36,21 +36,6 @@ class Save extends Action
     private $dataPersistor;
 
     /**
-     * Sender email config path
-     */
-    const XML_PATH_EMAIL_SENDER = 'customer_request_price/email/admin/email';
-
-    /**
-     * Sender name config path
-     */
-    const XML_PATH_NAME_SENDER = 'customer_request_price/email/admin/name';
-
-    /**
-     * Email template config path
-     */
-    const XML_PATH_EMAIL_TEMPLATE = 'customer_request_price/email/template';
-
-    /**
      * @var TransportBuilder
      */
     private $transportBuilder;
@@ -141,7 +126,8 @@ class Save extends Action
                     $model = $this->requestRepository->getById($id);
                 }
 
-                if (!empty($id['answer_content'])) {
+                if (!empty($data['answer_content'])) {
+
                     $this->inlineTranslation->suspend();
 
                     $storeScope = ScopeInterface::SCOPE_STORE;
@@ -165,7 +151,7 @@ class Save extends Action
                 $model->setData($data);
                 $model->setStatus(Request::STATUS_CLOSED);
                 $this->requestRepository->save($model);
-                $this->messageManager->addSuccess(__('You answered the request.'));
+                $this->messageManager->addSuccessMessage(__('You answered the request.'));
                 $this->dataPersistor->clear('customer_request_price');
 
                 if ($this->getRequest()->getParam('back'))
@@ -174,7 +160,7 @@ class Save extends Action
                 }
                 return $resultRedirect->setPath('*/*/');
             } catch (NoSuchEntityException $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
                 $this->messageManager->addException($e, __('Something went wrong while answer the request.'));
             }
@@ -197,8 +183,14 @@ class Save extends Action
     public function getSenderData()
     {
         return [
-            'name' => $this->scopeConfig->getValue(static::XML_PATH_NAME_SENDER),
-            'email' => $this->scopeConfig->getValue(static::XML_PATH_EMAIL_SENDER)
+            'name' => $this->scopeConfig->getValue(
+                'trans_email/ident_support/name',
+                ScopeInterface::SCOPE_STORE
+            ),
+            'email' => $this->scopeConfig->getValue(
+                'trans_email/ident_support/email',
+                ScopeInterface::SCOPE_STORE
+            )
         ];
     }
 }

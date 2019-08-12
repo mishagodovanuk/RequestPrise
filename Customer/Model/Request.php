@@ -10,7 +10,7 @@ use Smile\Customer\Api\Data\RequestInterface;
  * Class Request
  * @package Smile\Customer\Model
  */
-class Request extends AbstractModel implements RequestInterface
+class Request extends AbstractModel implements RequestInterface, IdentityInterface
 {
     /**#@+
      * Request's Statuses
