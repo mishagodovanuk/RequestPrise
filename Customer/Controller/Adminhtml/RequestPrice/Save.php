@@ -126,6 +126,8 @@ class Save extends Action
                     $model = $this->requestRepository->getById($id);
                 }
 
+                $model->setData($data);
+
                 if (!empty($data['answer_content'])) {
 
                     $this->inlineTranslation->suspend();
@@ -147,9 +149,9 @@ class Save extends Action
                     $transport->sendMessage();
 
                     $this->inlineTranslation->resume();
+                    $model->setStatus(Request::STATUS_CLOSED);
                 }
-                $model->setData($data);
-                $model->setStatus(Request::STATUS_CLOSED);
+
                 $this->requestRepository->save($model);
                 $this->messageManager->addSuccessMessage(__('You answered the request.'));
                 $this->dataPersistor->clear('customer_request_price');
