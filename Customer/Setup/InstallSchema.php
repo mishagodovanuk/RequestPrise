@@ -1,5 +1,5 @@
 <?php
-namespace Smile\Catalog\Setup;
+namespace Smile\Customer\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
