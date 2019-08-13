@@ -11,5 +11,5 @@
     <span><?= $block->getButtonLabel(); ?></span>
 </button>
 <div id="popup-modal-form" style="display:none;">
-    <?php echo $block->getRequestPriceForm(); ?>
+    <?php echo $block->getChildHtml('product.request.price.form'); ?>
 </div>

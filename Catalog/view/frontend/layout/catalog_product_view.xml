@@ -8,7 +8,9 @@
     <body>
         <referenceContainer name="product.info.price">
             <referenceBlock name="product.price.final" remove="true"/>
-            <block name="product.request.price" class="Smile\Catalog\Block\Catalog\RequestPriceButton" template="Smile_Catalog::request_price_button.phtml" after="product.info.review"/>
+            <block name="product.request.price" class="Smile\Catalog\Block\Catalog\RequestPriceButton" template="Smile_Catalog::request_price_button.phtml" after="product.info.review">
+                <block name="product.request.price.form" class="Smile\Catalog\Block\Catalog\RequestPriceForm" template="Smile_Catalog::request_price_form.phtml"/>
+            </block>
         </referenceContainer>
     </body>
 </page>
