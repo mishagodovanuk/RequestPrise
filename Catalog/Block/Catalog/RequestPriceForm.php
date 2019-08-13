@@ -50,16 +50,6 @@ class RequestPriceForm extends Template
     }
 
     /**
-     * Get current category
-     *
-     * @return object
-     */
-    public function getCurrentCategory()
-    {
-        return $this->_registry->registry('current_category');
-    }
-
-    /**
      * Get current product
      *
      * @return object
