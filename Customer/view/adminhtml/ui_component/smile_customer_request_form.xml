@@ -137,8 +137,7 @@
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">request</item>
                     <item name="sortOrder" xsi:type="string">70</item>
-                    <item name="formElement" xsi:type="string">wysiwyg</item>
-                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
                     <item name="additionalClasses" xsi:type="string">admin__field-wide</item>
                     <item name="dataType" xsi:type="string">textarea</item>
                     <item name="label" xsi:type="string" translate="true">Answer</item>

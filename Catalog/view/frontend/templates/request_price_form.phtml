@@ -8,7 +8,7 @@
       id="request-price-form"
       method="post"
       data-hasrequired="<?= __('* Required Fields') ?>"
-      data-mage-init='{"validation":{}}'>
+    >
     <fieldset class="fieldset">
         <legend class="legend"><span>Please write your requested price</span></legend><br />
         <div class="field name required">
@@ -18,9 +18,9 @@
             </div>
         </div>
         <div class="field email required">
-            <label class="label" for="request_email"><span><?= __('Email') ?></span></label>
+            <label class="label" for="email"><span><?= __('Email') ?></span></label>
             <div class="control">
-                <input name="request_email" id="request_email" title="<?= __('Email') ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                <input name="email" id="email" title="<?= __('Email') ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
             </div>
         </div>
         <div class="field comment required">

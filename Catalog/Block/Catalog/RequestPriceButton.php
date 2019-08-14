@@ -26,19 +26,4 @@ class RequestPriceButton extends Template
     {
         return __('Request price');
     }
-
-    /**
-     * Get Request price form
-     *
-     * @return string
-     *
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
-    public function getRequestPriceForm()
-    {
-        return $this->getLayout()
-            ->createBlock("Smile\Catalog\Block\Catalog\RequestPriceForm")
-            ->setTemplate('Smile_Catalog::request_price_form.phtml')
-            ->toHtml();
-    }
 }
