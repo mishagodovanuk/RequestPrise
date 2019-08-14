@@ -52,7 +52,6 @@ class Save extends Action
                 $data = $this->getRequest()->getParams();
                 $model = $this->requestFactory->create();
                 $model->setData($data);
-                $model->setEmail($data['request_email']);
                 $this->requestRepository->save($model);
                 $this->messageManager->addSuccessMessage(__('Your request has been saved'));
             }
