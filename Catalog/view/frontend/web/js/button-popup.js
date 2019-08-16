@@ -16,6 +16,7 @@ define(
     ) {
 
         return function () {
+
             var $form = $('#request-price-form');
             $form.mage('validation', {});
             var options = {
