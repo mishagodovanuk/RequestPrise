@@ -119,12 +119,7 @@ class Save extends Action
             $id = $this->getRequest()->getParam('id');
 
             try {
-                if (!$id) {
-                    $model = $this->requestFactory->create();
-                    $data['id']= null;
-                } else {
-                    $model = $this->requestRepository->getById($id);
-                }
+                $model = $this->requestRepository->getById($id);
 
                 $model->setData($data);
 
@@ -132,7 +127,6 @@ class Save extends Action
 
                     $this->inlineTranslation->suspend();
 
-                    $storeScope = ScopeInterface::SCOPE_STORE;
                     $transport = $this->transportBuilder
                         ->setTemplateIdentifier('request_admin_email_answer_template')
                         ->setTemplateOptions(
@@ -156,10 +150,6 @@ class Save extends Action
                 $this->messageManager->addSuccessMessage(__('You answered the request.'));
                 $this->dataPersistor->clear('customer_request_price');
 
-                if ($this->getRequest()->getParam('back'))
-                {
-                    return $resultRedirect->setPath('*/*/edit', ['id' => $model->getById()]);
-                }
                 return $resultRedirect->setPath('*/*/');
             } catch (NoSuchEntityException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
@@ -168,6 +158,7 @@ class Save extends Action
             }
 
             $this->dataPersistor->set('customer_request_price', $data);
+
             return $resultRedirect->setPath(
                 '*/*/edit',
                 ['id' => $this->getRequest()->getParam('id')]
